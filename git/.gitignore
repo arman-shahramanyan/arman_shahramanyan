@@ -1,3 +1,2 @@
-#this file for ignore .txt files
-
-*.txt
+#this file for ignore 
+git/*txt
