@@ -7,7 +7,7 @@ int x, n=1;
 	cout << "Please enter number from 1 to 9 \n";
 	cin >> x;
 	while (n<=9 ){
-	if (x < 1 || x >9 ){
+	while (x < 1 || x >9 ){
 		cout << "You entered the wrong number \n";
 		cin >> x;
 	}
