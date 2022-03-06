@@ -14,10 +14,10 @@ main ()
   }
   const int h = size;
   int i = 1;
-  while (i <= size)
+  while (i <= h)
     {
       int j = 1;
-      while (j <= size - i)
+      while (j <= h - i)
 	{
 	  cout << " ";
 	  j++;
@@ -33,9 +33,9 @@ main ()
     }
   cout << endl;
   i = 1;
-  while (i <= size)
+  while (i <= h)
     {
-      int j = size;
+      int j = h;
       while (j >= i)
 	{
 	  cout << "*";
@@ -46,7 +46,7 @@ main ()
     }
   cout << endl;
   i = 1;
-  while (i <= size)
+  while (i <= h)
     {
       int j = 1;
       while (j <= i)
@@ -59,10 +59,10 @@ main ()
     }
   i = 1;
   cout << endl;
-  while (i <= size)
+  while (i <= h)
     {
       int j = 1;
-      while (j <= size - i)
+      while (j <= h - i)
 	{
 	  cout << " ";
 	  j++;
