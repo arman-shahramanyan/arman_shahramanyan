@@ -9,20 +9,15 @@ main ()
   cin >> x;
   while (1)
     {
-      if (x >= 'a' && x <= 'z')
+      if ((x >= 'a' && x <= 'z') || (x >= 'A' && x <= 'Z' ))
 	{
 	  break;
 
-	}
-      else if (x >= 'A' && x <= 'Z')
+	}  else
 	{
 
-	  break;
-	}
-      else
-	{
-
-	  cout << "is not letter \n";
+	  cout << "Is not letter \n";
+	  cout << "Try again \n";
 	  cin >> x;
 	}
     }
