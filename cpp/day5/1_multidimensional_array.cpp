@@ -19,16 +19,16 @@ int main()
    for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
             
-              if (j > i && j < x && i < 2 ) {
+              if (j > i && j < x && i < size/2 ) {
                   sum [0] += arr [i][j];
               } else 
-              if (i > 2  && j < y && j > x) {
+              if (i > size/2  && j < y && j > x) {
                   sum [1] += arr [i][j];
               } else 
-              if (i < 4 && j < i && j < x) {
+              if (i < size - 1 && j < i && j < x) {
                   sum [2] += arr [i][j];
               } else 
-              if (i < 4 && j > i && j !=x) {
+              if (i < size - 1 && j > i && j !=x) {
                   sum [3] += arr [i][j];
               } 
               if (j > i) {
