@@ -1,0 +1,12 @@
+բարև->hello
+ուսանողներ->students
+դպրոց->school
+աղջիկ->girl
+տղա->boy
+տուն->home
+գարուն->spring
+ծրագիր->program
+համակարգիչ->computer
+սենյակ->room
+համալսարան->university
+դաս->lesson
