@@ -1,62 +1,66 @@
 #include <iostream>
-#include <fstream>
 #include <string>
+#include <fstream>
 
 using namespace std;
 
+string right(string word); 
+
 int main() {
-string text;
-getline(cin, text);
-//cout << text << endl;
-int s = 0;
-int count = 0;
-int *arr;
-for (int i = 0; i <= text.length(); i++) {
-     if (text[i] == ' ' || text[i] == '\0') {
-	*(arr + s) = count;
-	 s++;
-	 count = 0;
-     } 
-    if (text[i] != ' ') {
-    	count++;
-    }
-     
-    
-}
-/*for (int i = 0; i < s; i++) {
-cout << *(arr + i) << " ";
-}*/
+  string text;
+  cout << "Enter some words from the file \n";
+  getline(cin, text);
+  text += " ";
+  ofstream cor;
+  cor.open("correct.txt");
 
-ifstream word;
-word.open("dictionary.txt");
-ofstream t;
-t.open("correct.txt");
-string str;
-int i = 0;
-for (int a = 0; a < 68; a++) {
-	word >> str;
-	int j = 0;
-   while (i < s) {
-	   int x = 0;
-	   int y = 0;
-	while ( j < *(arr + i)) {
-	     if (text[j] == str[y]) {
-	        x++;
-	     }
-	     if (x == (*(arr + i) - 1)) {
-	     	t << str;
-	     }
-	     j++;
-	     y++;
+  string word;
+  int j = 0;
+  int c = 0;
+  for (int x = 0; x < text.length(); x++) {
+  	if (text[x] == ' ') {
+	    c++;
 	}
-	j += (*(arr + i) + 1);
-	i++;
-   }
-
-
+  }
+ 
+  for(int i = 0; i < c; i++ ) {
+    word = "";
+    for(;text[j] != ' '; j++){
+      word += text[j];
+    }
+    j++;
+    cor << right(word) << ' ';
+	
+  }
+  cor.close();
+  return 0;
 }
-t.close();
-word.close();
+string right(string word) {
+  ifstream dic;
+  dic.open("dictionary.txt");
+  string s;
+  int count = 0;
+  while(!dic.eof()) {
+    count = 0;
+    getline(dic, s);
 
-return 0;
+    if(s.size() != word.size()){
+      continue;
+    }
+    for(int i = 0; word[i] != '\0'; i++) {
+      if(word[i] != s[i]){
+        count ++;
+      }
+    }
+    if(count == 1) {
+      break;
+    }
+  }
+  dic.close();
+  if(count != 1) {
+    return word;
+  }
+  return s;
 }
+
+
