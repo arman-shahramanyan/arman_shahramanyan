@@ -18,7 +18,7 @@ cout << "				Start computer(input 2)\n";
 int select;
 char p;
 cin >> select;
-string city[22] = {"Erevan", "Moscow", "Sochi", "Stepanakert", "Paris", "Berlin", "Rim", "Madrid", "Kiev", "Tumen", "Gyumri", "Washington", "Novosibirsk", "Sankt-Peterburg", "Hadrut", "Hamburg", "London", "Oslo", "Tokyo", "Pekin", "Amsterdam", "Noterdam"};
+string city[22] = {"Yerevan", "Moscow", "Sochi", "Stepanakert", "Paris", "Berlin", "Rim", "Madrid", "Kiev", "Tumen", "Gyumri", "Washington", "Novosibirsk", "Odessa", "Hadrut", "Hamburg", "London", "Oslo", "Tokyo", "Pekin", "Amsterdam", "Roterdam"};
 int r = rand() % 22;
 while(1) {
   if (select == 1) {
@@ -50,6 +50,24 @@ void  player(char pend) {
   string pname;
  	cout << "Your move:\n	Enter city name: ";
 	cin >> pname;
+  int m = 1;
+  int n = 0;
+  string city[22] = {"Yerevan", "Moscow", "Sochi", "Stepanakert", "Paris", "Berlin", "Rim", "Madrid", "Kiev", "Tumen", "Gyumri", "Washington", "Novosibirsk", "Odessa", "Hadrut", "Hamburg", "London", "Oslo", "Tokyo", "Pekin", "Amsterdam", "Roterdam"};
+  for (int i = 0; i < 22; i++) {
+     if (pname != city[i]) {
+        n++;
+	if (n == 22) {
+	cout << "			1.You Lose! \n";
+	m = 0;
+	}
+    }
+    if (pname == city[i]) {
+    	city[i] = "";
+	m = 1;
+	break;
+    }
+  }
+  if (m == 1) {
   char firstletter = pname[0];
   if (firstletter != pend && x > 0) {
   	cout << "			You Lose! \n"; 
@@ -65,24 +83,27 @@ void  player(char pend) {
   x += 1;
   comp(endletter);
   }
+  }
 }
 
 
 void comp(char cend) {
   string cname = "null";
 	cout << "Computer move:\n	City name: ";
-  string city[22] = {"Erevan", "Moscow", "Sochi", "Stepanakert", "Paris", "Berlin", "Rim", "Madrid", "Kiev", "Tumen", "Gyumri", "Washington", "Novosibirsk", "Sankt-Peterburg", "Hadrut", "Hamburg", "London", "Oslo", "Tokyo", "Pekin", "Amsterdam", "Noterdam"};
+  string city[22] = {"Yerevan", "Moscow", "Sochi", "Stepanakert", "Paris", "Berlin", "Rim", "Madrid", "Kiev", "Tumen", "Gyumri", "Washington", "Novosibirsk", "Odessa", "Hadrut", "Hamburg", "London", "Oslo", "Tokyo", "Pekin", "Amsterdam", "Roterdam"};
+  
+
   char firstletter;
   char endletter;
   int b = 0;
   for (int i = 0; i <= 22; i++) {
-      if (city[i][0] == cend ) {
+       if (city[i][0] == cend ) {
       cname = city[i];
    	cout << "  " << cname << endl;
       break;
       }
   } 
-  if ( cname == "null") {
+  if (cname == "null") {
   	cout << "			You Win!!! \n";
 	b = 1;
   }
