@@ -8,18 +8,9 @@ using namespace std;
 void translate1(string str, string s[12]) {
 int count = 0;
 string word = "";
-/* for (int i = 0; i <= str.length(); i++) {
-    if (str[i] != ' ' || str[i] != '\0') {
-      elem[i] = str[i];
-    }
-    if (str[i] == ' ' || str[i] == '\0') {
-    	break;
-    }
-  }*/
   for(int i = 0; i < 12; i++) {
      for(int j = 0; s[i][j] != '-'; j++) {
 	  word += s[i][j];
-//	  cout << word;
      }
      if (word == str) {
        for (int m = word.length() + 2; s[i][m] != '\0'; m ++) {
@@ -75,9 +66,6 @@ setlocale(LC_ALL,"Armenian");
 	count++;
      }
   }
-  /*for (int i = 0; i < 12; i++) {
-  	cout << s2[i] << endl;
-  }*/
   string str1;
   if (mode == 1) {
     for (int i = 0; i <= text.length(); i++) {
