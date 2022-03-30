@@ -7,28 +7,30 @@ using namespace std;
 
 void translate1(string str, string s[12]) {
 int count = 0;
-string elem;
- for (int i = 0; i <= str.length(); i++) {
+string word = "";
+/* for (int i = 0; i <= str.length(); i++) {
     if (str[i] != ' ' || str[i] != '\0') {
       elem[i] = str[i];
     }
     if (str[i] == ' ' || str[i] == '\0') {
     	break;
     }
-  }
+  }*/
   for(int i = 0; i < 12; i++) {
-      for(int j = 0; s[i][j] != '-'; j++) {
-          if (s[i][j] == str[j]) {
-              count++;
-          }
-          if (count == str.length()) {
-              count += 2;
-             for (int m = count; s[i][m] != '\0'; m ++) {
-                  cout << s[i][m];
-             }
-                  cout << endl;
-          }
-      }
+     for(int j = 0; s[i][j] != '-'; j++) {
+	  word += s[i][j];
+//	  cout << word;
+     }
+     if (word == str) {
+       for (int m = word.length() + 2; s[i][m] != '\0'; m ++) {
+            cout << s[i][m];
+       }
+            cout << " ";
+	    break;
+
+     }
+     
+    word = ""; 
   }
 }
 
@@ -67,21 +69,40 @@ setlocale(LC_ALL,"Armenian");
     f2 >> s2[i]; 
   }
   f2.close();
+  int count = 0;
+  for (int i = 0; i <= text.length(); i++) {
+     if (text[i] == ' ' || text[i] == '\0') {
+	count++;
+     }
+  }
+  /*for (int i = 0; i < 12; i++) {
+  	cout << s2[i] << endl;
+  }*/
+  string str1;
   if (mode == 1) {
     for (int i = 0; i <= text.length(); i++) {
       if (text[i] == ' ' || text[i] == '\0') {
-          translate1(text, s1);    
+         translate1(str1, s1);
+	 str1 = "";
+	 i++;
+      }
+      if (text[i] != ' ' || text[i] != '\0') {
+      	  str1 += text[i];
       }
     }  
   }
-
   if (mode == 2) {
     for (int i = 0; i <= text.length(); i++) {
-      if (text[i] == ' ' || text[i] == '\0') {
-          translate1(text, s2);    
-      }
+       if (text[i] == ' ' || text[i] == '\0') {    
+         translate1(str1, s2);
+	 str1 = "";
+	 i++;
+       }
+       if (text[i] != ' ' || text[i] != '\0') {
+      	  str1 += text[i];
+       }    
     }
   }
- 
+  cout << endl; 
  return 0;
 }
