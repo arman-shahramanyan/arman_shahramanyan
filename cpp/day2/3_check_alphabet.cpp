@@ -4,12 +4,12 @@ using namespace std;
 int
 main ()
 {
-  char x;
+  char ch;
   cout << "Enter any letter from the English alphabet: ";
-  cin >> x;
+  cin >> ch;
   while (1)
     {
-      if ((x >= 'a' && x <= 'z') || (x >= 'A' && x <= 'Z' ))
+      if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z' ))
 	{
 	  break;
 
@@ -18,10 +18,10 @@ main ()
 
 	  cout << "Is not letter \n";
 	  cout << "Try again \n";
-	  cin >> x;
+	  cin >> ch;
 	}
     }
-  switch (x)
+  switch (ch)
     {
     case 'a':
     case 'e':
@@ -33,10 +33,10 @@ main ()
     case 'I':
     case 'O':
     case 'U':
-      cout << x << " is a vowel \n";
+      cout << ch << " is a vowel \n";
       break;
     default:
-      cout << x << " is a consonant \n";
+      cout << ch << " is a consonant \n";
       break;
     }
 

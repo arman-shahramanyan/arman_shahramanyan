@@ -2,16 +2,16 @@
 using namespace std;
 
 int main  (){
-int num, y, x=1;
+int x, num, fac=1;
 	cout << "Please enter number \n";
-       	cin >> num;
-	y=num;
-while( num>1 ){
+       	cin >> x;
+	num = x;
+while( x>1 ){
 	
-	x=x*num;
-	num--;	
+	fac = fac * x;
+	x--;	
  	}	
-	cout << "Factorial " << y << "=" << x << endl;
+	cout << "Factorial " << num << "=" << fac << endl;
 
 return 0;
 }

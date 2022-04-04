@@ -3,16 +3,16 @@ using namespace std;
 
 int main (){
 
-int x, n=1;
+int num1, num2=1;
 	cout << "Please enter number from 1 to 9 \n";
-	cin >> x;
-	while (n<=9 ){
-	while (x < 1 || x >9 ){
+	cin >> num1;
+	while (num2<=9 ){
+	while (num1 < 1 || num1 >9 ){
 		cout << "You entered the wrong number \n";
-		cin >> x;
+		cin >> num1;
 	}
-	cout << x << "*" << n << "=" << n*x << endl;
-	n++;
+	cout << num1 << "*" << num2 << "=" << num2*num1 << endl;
+	num2++;
 	}
 
 

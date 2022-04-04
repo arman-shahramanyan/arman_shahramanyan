@@ -3,14 +3,14 @@ using namespace std;
 
 int main  (){
 int a, b;
-int p, s;
+int per, area;
 	cout << "Please enter rectangle parameters \n";
 	cin >> a;
 	cin >> b;
-    p=2*(a+b);
-    s=a*b;
-	cout << "Perimeter=" << p << endl;
-	cout << "Area=" << s << endl;
+    per = 2 * (a + b);
+    area = a * b;
+	cout << "Perimeter=" << per << endl;
+	cout << "Area=" << area << endl;
 
 
 return 0;
