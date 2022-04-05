@@ -1,0 +1,10 @@
+BMW e46 5500 150000 3.0 automatic RWD gray
+Mercedes-Benz c180 4000 280000 1.8 manual RWD white
+Audi A4 6000 250000 2.0 automatic AWD black
+Honda accord 10000 65000 2.4 automatic FWD gray
+Ford fusion 11000 140000 2.5 automatic FWD red
+BMW X7 57000 54000 4.4 automatic AWD black
+Toyota camry 9000 120000 2.5 automatic FWD black
+Lada 2106 2700 95000 1.6 manual RWD green
+Mercedes-Benz G63 48000 32000  4.0 automatic AWD gray
+BMW M8 124000 14500 4.4 automatic AWD blue
