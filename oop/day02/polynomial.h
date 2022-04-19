@@ -4,12 +4,21 @@
 class Polynomial
 {
 private:
-	int _member_count;
-	int _number;
+	int _memberCount;
+	int _maxDegree;
+	double _number;
+	double *_coefficent = new double[_memberCount];
 public:
-	Polynomial(int members_count, int degree);
+	Polynomial & operator = (const Polynomial &);
+	Polynomial operator + (const Polynomial &);
+	Polynomial operator - (const Polynomial &);
+	Polynomial operator * (const Polynomial &);
+	Polynomial & operator += (const Polynomial &);
+	Polynomial & operator -= (const Polynomial &);
+	Polynomial & operator *= (const Polynomial &);
 	void Add();
 	void Multiply();
-	void Substract();
+	void Subtract();
+	~Polynomial();
 };
 #endif 
