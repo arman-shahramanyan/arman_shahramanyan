@@ -85,7 +85,7 @@ void Human::SetHairColor(HairColour hair_colour) {
   if (hair_colour == Brown || hair_colour == Black || hair_colour == Blonde || hair_colour == White ) {
     _hair_colour = hair_colour;
   } else {
-    _hair_colour = White;
+    _hair_colour = Brown;
   }
 }
 
