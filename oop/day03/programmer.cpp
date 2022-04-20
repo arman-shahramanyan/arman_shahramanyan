@@ -48,15 +48,15 @@ void Programmer::CodeReview(){
 				CorrectCodeErrors();
   }
 } 
-void SetExperienceLevel(SkillLevel level) {
+void SetExperienceLevel(SkillLevel skillLevel) {
   if(experience >= 0 && experience <= 1) {
-        level = Internal;
+        _skillLevel = Internal;
   } else if (experience > 1 && experience <= 3) { 
-				level = Junior;
+	_skillLevel = Junior;
   } else if (experience > 3 && experience <= 6) { 
-        level = Middle;
+        _skillLevel = Middle;
   } else if(experience > 6) { 
-        level = Senior;
+        _skillLevel = Senior;
   }
   }
 
