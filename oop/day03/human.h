@@ -17,24 +17,24 @@ private:
       int _highPressure;
       int _lowPressure;
       int _alcoholDependency;
-			bool _isBreathing;
+      bool _isBreathing;
 protected:
       int _mental_health;
-	    int _height;
+      int _height;
       int _weight;
-	    int _hungerDegree;
+      int _hungerDegree;
       int _thirstDegree;
       void Think();
 public:
       void GetUp();
-      char* Speak();
+      void Speak();
       void Walk();
       void Sleep();
       void GetAngry();
       void Joy();      
       void Eat(Food _food);
       void Drink(Drinks _drink);
-	    bool Die();
+      bool Die();
       void SetEyeColour(EyeColour eye_colour);
       HairColour GetHairColour() const;
       void SetHairColor(HairColour hair_colour);
@@ -50,7 +50,6 @@ public:
       void SetAlcoholDependency(int alcoholDependency);
       int GetAlcoholDependency();
 		
-
       Human(Gender gender, EyeColour eye_colour, HairColour hair_colour, Human* father, Human* mother, int health_level, int tirednessDegree, int mental_health, int height, int weight, int hungerDegree, int thirstDegree, int highPressure, int lowPressure, int alcoholDependency, bool isBreathing = true);
       Human(const Human&) = default;
 };
