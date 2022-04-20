@@ -1,35 +1,9 @@
 #ifndef TEACHER_H
 #define TEACHER_H
-​
+
 #include "employee.h"
 #include "enums.h"
-​
-enum Subject {
-  armenian,
-  russian,
-  english,
-  french,
-  german,
-  history,
-  math,
-  physics,
-  chemistry,
-  biology,
-  geography,
-  physicalEducation,
-  drawing,
-  music
-};
-​
-enum Place {
-  primarySchool,
-  secondarySchool,
-  highSchool,
-  privateSchool,
-  academy,
-  educationCenter
-};
-​
+
 class Teacher:public Employee {
   private:
       Subject _teachingSubject;
@@ -39,6 +13,8 @@ class Teacher:public Employee {
 	  Teacher(const Teacher&) = default;
       void Teach(bool _lesson);
       void CheckHomework();
-	  void DevelopProfessionalSkills();
-      void Joy() override;
+	    void DevelopProfessionalSkills();
+      void StartWork() override;
+			void Work() override;
+			void EndWork() override;
 };
