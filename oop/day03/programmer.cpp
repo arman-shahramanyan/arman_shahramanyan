@@ -15,10 +15,10 @@ void Employee::Work() override {
   _freeFromWork = false;
   int time = 0;
   while (time <= _workTime) {
-				if (time == _workTime / 2) {
-				    BreakTime();
-				    ++time;
-				    continue;
+	if (time == _workTime / 2) {
+	    BreakTime();
+	    ++time;
+	    continue;
         }
         ++time;
         EndWork();
@@ -31,21 +31,21 @@ string Programmer::WriteCode(string code){
 
 bool Programmer::TestCode(string code){
   if (codeIsCorrect()) {
-				return true;
+	return true;
   }
   return false;
 }
 
 void Programmer::CodeReview(){
   if(TestCode()){
-				_mental_level++;
-				Joy();
+	_mental_level++;
+	Joy();
   }
   else {
-				Smoke();
-				Drink(coffee);
-				GetAngry();
-				CorrectCodeErrors();
+	Smoke();
+	Drink(coffee);
+	GetAngry();
+	CorrectCodeErrors();
   }
 } 
 void SetExperienceLevel(SkillLevel skillLevel) {
