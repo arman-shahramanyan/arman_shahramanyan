@@ -4,21 +4,21 @@
 using namespace std;
 
 Human::Human(Gender gender, EyeColour eye_colour, HairColour hair_colour, Human* father, Human* mother, int health_level, int tirednessDegree, int mental_health, int height, int weight, int hungerDegree, int thirstDegree, int highPressure, int lowPressure, int alcoholDependency, bool isBreathing = true) {
-	_gender = gender;
-	_eye_colour = eye_colour;
+  _gender = gender;
+  _eye_colour = eye_colour;
   _hair_colour = hair_colour;
   _father = father;
   _mother = mother;
   _health_level = health_level;
-	_tirednessDegree = tirednessDegree;
+  _tirednessDegree = tirednessDegree;
   _mental_health = mental_health;
   _height = height;
   _weight = weight;
-	_hungerDegree = hungerDegree; 
-	_thirstDegree = thirstDegree;
-	_highPressure = highPressure;
-	_lowPressure = lowPressure;
-	_isBreathing = isBreathing;
+  _hungerDegree = hungerDegree; 
+  _thirstDegree = thirstDegree;
+  _highPressure = highPressure;
+  _lowPressure = lowPressure;
+  _isBreathing = isBreathing;
 }
 
 void Human::Eat(Food food) {
