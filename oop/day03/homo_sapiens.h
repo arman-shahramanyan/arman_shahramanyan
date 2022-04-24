@@ -16,16 +16,15 @@ private:
     int _intelectLevel;
     int _smokeDependency;
 public:
-    HomoSapience(const Human& human,  Religion religion, Race race, Nationality nationality, string surname, string fatherName, int patienceLevel, int intelectLevel);
+    HomoSapience(const Human& human,  Religion religion, Race race, Nationality nationality, string surname, string fatherName, int patienceLevel, int intelectLevel, int smokeDependency);
     HomoSapience(const HomoSapience&) = default;
     void GoToGym();
     void GoToParty();
-    void GetAngry();
     void ListenToMusic();
     void Read();
     virtual void GetTired();
     void SetSmokeDependency(int smokeDependency); 
-    int GetSmokeDependency();
+    int GetSmokeDependency() const;
     void Smoke(int smokeDependency);
     void Relax();
 }; 

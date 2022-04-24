@@ -66,5 +66,62 @@ enum Nationality {
   French,
   Spanish
 };
+
+enum Company {
+  Instigate,
+  Synergy,
+  CapitalSoft,
+  Microsoft
+};
+
+enum ProgrammingLanguage {
+  JavaScript,
+  Assebler,
+  Cpp,
+  Python
+};
+
+enum SkillLevel {
+  Internal,
+  Junior,
+  Middle,
+  Senior
+};
+
+enum Specialist {
+  ComputerSystemAnalyst,
+  DatabaseAdministrator,
+  SecurityAnalyst,
+  HardwareEngineer,
+  SoftwareDeveloper,
+  WebDesigner
+};
+
+enum Subject {
+  armenian,
+  russian,
+  english,
+  french,
+  german,
+  history,
+  math,
+  physics,
+  chemistry,
+  biology,
+  geography,
+  physicalEducation,
+  drawing,
+  music
+};
+
+enum Place {
+  primarySchool,
+  secondarySchool,
+  highSchool,
+  privateSchool,
+  academy,
+  educationCenter
+};
+
  
 #endif 

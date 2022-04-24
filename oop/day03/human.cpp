@@ -3,21 +3,22 @@
 
 using namespace std;
 
-Human::Human(Gender gender, EyeColour eye_colour, HairColour hair_colour, Human* father, Human* mother, int health_level, int tirednessDegree, int mental_health, int height, int weight, int hungerDegree, int thirstDegree) {
-	_gender = gender;
-	_eye_colour = eye_colour;
-      	_hair_colour = hair_colour;
-      	_father = father;
-      	_mother = mother;
-      	_health_level = health_level;
-	_tirednessDegree = tirednessDegree;
-      	_mental_health = mental_health;
-     	_height = height;
-     	_weight = weight;
-	_hungerDegree = hungerDegree; 
-	_thirstDegree = thirstDegree;
-	_highPressure = highPressure;
-	_lowPressure = lowPressure;
+Human::Human(Gender gender, EyeColour eye_colour, HairColour hair_colour, Human* father, Human* mother, int health_level, int tirednessDegree, int mental_health, int height, int weight, int hungerDegree, int thirstDegree, int highPressure, int lowPressure, int alcoholDependency, bool isBreathing = true) {
+  _gender = gender;
+  _eye_colour = eye_colour;
+  _hair_colour = hair_colour;
+  _father = father;
+  _mother = mother;
+  _health_level = health_level;
+  _tirednessDegree = tirednessDegree;
+  _mental_health = mental_health;
+  _height = height;
+  _weight = weight;
+  _hungerDegree = hungerDegree; 
+  _thirstDegree = thirstDegree;
+  _highPressure = highPressure;
+  _lowPressure = lowPressure;
+  _isBreathing = isBreathing;
 }
 
 void Human::Eat(Food food) {
@@ -84,7 +85,7 @@ void Human::SetHairColor(HairColour hair_colour) {
   if (hair_colour == Brown || hair_colour == Black || hair_colour == Blonde || hair_colour == White ) {
     _hair_colour = hair_colour;
   } else {
-    _hair_colour = White;
+    _hair_colour = Brown;
   }
 }
 
@@ -98,6 +99,12 @@ Human* Human::GetFather() const {
 
 Human* Human::GetMother() const {
   return _mother;
+}
+
+void Die () {
+  if (_health_level == 0) {
+      _isBreathing = false;				
+  }
 }
 
 void Human::SetHealthLevel(int health_level) {

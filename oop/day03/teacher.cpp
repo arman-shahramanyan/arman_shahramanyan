@@ -11,7 +11,9 @@ void Teacher::Teach(bool _lesson) {
   if (_lesson) {
       ++_workTime;
       Joy();
-  }
+  } else {
+				GetAngry();
+	}
 }
 void Teacher::CheckHomework() {
   bool _arePupilsReady;

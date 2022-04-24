@@ -25,7 +25,11 @@ public:
         bool Disease(int _health_level, int _mental_health);
         void SetSkills();
         GetSkills(string *_skills) const;
-        //bool CheckSkills(string *_skills)       
-        bool CheckAstronautType (int type); 
+        bool CheckSkills(string *_skills)       
+				bool CheckAstronautType (int type); 
+				void Work() override;
+				void FlyToSpace();
+				void AstronautTesting();
 };
+
 #endif
