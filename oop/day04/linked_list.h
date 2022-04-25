@@ -5,14 +5,19 @@
 class LinkedList
 {
 	private:
-		Node *_head, *_tail, *_prev;
+		Node *_head, *_tail;
 	public:
 		LinkedList();
+		void AddFront(int data);
+		void AddBack(int data);
 		void AddNode(int data, int index);
+		void RemoveFront();
+		void RemoveBack();
 		void RemoveNode(int index);
-		void GetElement(int index);
-		void Count();
+		int GetElement(int index);
+		int Count();
 		void Print();
+		~LinkedList();
 };
 
 #endif

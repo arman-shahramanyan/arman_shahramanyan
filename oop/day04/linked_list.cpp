@@ -8,10 +8,9 @@ LinkedList::LinkedList()
 {
     _head = NULL;
     _tail = NULL;
-    _prev = NULL;
 }
 
-void LinkedList::AddNode(int data, int index)
+void LinkedList::AddFront(int data)
 {
     ++num;
     Node *tmp = new Node;
@@ -22,28 +21,55 @@ void LinkedList::AddNode(int data, int index)
         _head = tmp;
         _tail = tmp;
     }
-    else if (index == 0)
+    else
     {
         tmp->_next = _head;
         _head = tmp;
     }
-    else if (index > 0 && index < num)
+}
+
+void LinkedList::AddBack(int data)
+{
+    ++num;
+    Node *tmp = new Node;
+    tmp->_data = data;
+    tmp->_next = NULL;
+    if (_head == NULL)
     {
-        if (_head->_next != NULL)
+        _head = tmp;
+        _tail = tmp;
+    }
+    else
+    {
+        _tail->_next = tmp;
+        _tail = tmp;
+    }
+}
+
+void LinkedList::AddNode(int data, int index)
+{
+    if (index >= 0 && index < num)
+    {
+        ++num;
+        Node *tmp = new Node;
+        tmp->_data = data;
+        tmp->_next = NULL;
+        if (_head == NULL)
         {
-            _prev = _head;
-            _prev->_next = _head->_next;
-            for (int i = 0; i < index; i++)
-            {
-                _prev = _prev->_next;
-            }
-            tmp->_next = _prev->_next;
-            _prev->_next = tmp;
+            _head = tmp;
+            _tail = tmp;
         }
-        else 
+        else
         {
-            _tail->_next = tmp;
-            _tail = _tail->_next;
+            Node *prev = new Node;
+            prev = _head;
+            prev->_next = _head->_next;
+            for (int i = 0; i < index; ++i)
+            {
+                prev = prev->_next;
+            }
+            tmp->_next = prev->_next;
+            prev->_next = tmp;
         }
     }
     else
@@ -51,8 +77,33 @@ void LinkedList::AddNode(int data, int index)
         cout << "Your index for function \"AddNode\" does not match the number of nodes in our list \n";
     }
 }
+void LinkedList::RemoveFront()
+{
+    --num;
+    Node *tmp = new Node;
+    tmp->_next = NULL;
+    tmp = _head;
+    _head = _head->_next;
+    delete tmp;
+}
 
-void LinkedList::RemoveNode (int index)
+void LinkedList::RemoveBack()
+{
+    --num;
+    Node *prev = new Node;
+    prev = _head;
+    prev->_next = _head->_next;
+    for (int i = 0; i < num - 1; i++)
+    {
+        prev = prev->_next;
+    }
+   
+    delete prev->_next;
+    prev->_next = NULL;
+    _tail = prev;
+}
+
+/*void LinkedList::RemoveNode (int index)
 {   
     Node *tmp = new Node;
     tmp->_next = NULL;
@@ -87,7 +138,7 @@ void LinkedList::RemoveNode (int index)
     {
         cout << "Your index for function \"RemoveNode\" does not match the number of nodes in our list \n";
     }
-}
+}*/
 
 void LinkedList::Print()
 {
@@ -110,12 +161,12 @@ void LinkedList::Print()
     }
 }
 
-void LinkedList::Count()
+int LinkedList::Count()
 {
-    cout << "Number of nodes in the list = " << num << endl;
+    return num;
 }
 
-void LinkedList::GetElement (int index)
+int LinkedList::GetElement (int index)
 {
     if (index >= 0 && index < num)
     {
@@ -126,11 +177,19 @@ void LinkedList::GetElement (int index)
         {
             tmp = tmp->_next;
         }
-        cout << "Node information under index(" << index << ") = " << tmp->_data << endl;
+        return tmp->_data;
     }
     else
     {
         cout << "Your index for function \"GetElement\" does not match the number of nodes in our list \n";
 
+    }
+}
+
+LinkedList::~LinkedList()
+{
+    for (int i = 0; i < num; i++)
+    {
+        RemoveFront();
     }
 }

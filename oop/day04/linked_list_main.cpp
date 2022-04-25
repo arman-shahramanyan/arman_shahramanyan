@@ -6,7 +6,7 @@ using namespace std;
 int main()
 {
     LinkedList a;
-    a.Print();          //Call Print() function for print all nodes, but our list is empty
+    /*a.Print();          //Call Print() function for print all nodes, but our list is empty
     a.AddNode(1, 0);    //Add head node 
     a.AddNode(32, 1);   //Add node after head node
     a.AddNode(50, 1);   //Add node after second node
@@ -20,7 +20,11 @@ int main()
     a.Count();          //Print number of nodes in the list
     a.RemoveNode(3);    //Remove a node under index(3)
     a.Print();          //Print all nodes
-    a.Count();          //Print number of nodes in the list
-    a.GetElement(0);    //Print head node 
+    a.Count(); */         //Print number of nodes in the list
+    a.AddFront(5);
+    a.AddBack(88);
+    a.AddBack(9);
+    a.AddNode(15, 0);
+    a.Print();
 return 0;
 }
