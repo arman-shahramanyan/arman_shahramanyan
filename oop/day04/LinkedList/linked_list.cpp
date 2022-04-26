@@ -1,4 +1,5 @@
 #include <iostream>
+#include <exception>
 #include "linked_list.h"
 using namespace std;
 
@@ -48,131 +49,77 @@ void LinkedList::AddBack(int data)
 
 void LinkedList::AddNode(int data, int index)
 {
-    try
+    if (index >= 0 && index < num)
     {
-        if (index >= 0 && index < num)
+        ++num;
+        Node *tmp = new Node;
+        tmp->_data = data;
+        tmp->_next = NULL;
+        if (_head == NULL)
         {
-            ++num;
-            Node *tmp = new Node;
-            tmp->_data = data;
-            tmp->_next = NULL;
-            if (_head == NULL)
-            {
-                _head = tmp;
-                _tail = tmp;
-            }
-            else
-            {
-                Node *prev = new Node;
-                prev = _head;
-                prev->_next = _head->_next;
-                for (int i = 0; i < index; ++i)
-                {
-                    prev = prev->_next;
-                }
-                tmp->_next = prev->_next;
-                prev->_next = tmp;
-            }
+            _head = tmp;
+            _tail = tmp;
         }
         else
         {
-            throw 1;
-        }
-    }
-    catch(int err)
-    {
-        cout << "Your index for function \"AddNode\" does not match the number of nodes in our list \n";
-    }
-
-}
-void LinkedList::RemoveFront()
-{
-    try
-    {
-        if (_head != NULL)
-        {
-            --num;
-            Node *tmp = new Node;
-            tmp->_next = NULL;
-            tmp = _head;
-            _head = _head->_next;
-            delete tmp;
-        }
-        else
-        {
-            throw 1;
-        }
-    }
-    catch(int err)
-    {
-        cout << "Тhere are no nodes in the list \n"; 
-    }
-}
-
-void LinkedList::RemoveBack()
-{
-    try
-    {
-        if (_head != NULL)
-        {
-            --num;
             Node *prev = new Node;
             prev = _head;
             prev->_next = _head->_next;
-            for (int i = 0; i < num - 1; i++)
+            for (int i = 0; i < index; ++i)
             {
                 prev = prev->_next;
             }
-            delete prev->_next;
-            prev->_next = NULL;
-            _tail = prev;
-        }
-        else
-        {
-            throw 1;
+            tmp->_next = prev->_next;
+            prev->_next = tmp;
         }
     }
-    catch(int err)
+    else
     {
-        cout << "Тhere are no nodes in the list \n"; 
+        throw exception();
     }
+
 }
+
+
+
 
 void LinkedList::RemoveNode (int index)
 {
-    try
-    {   
-        if (index >= 0 && index < num)
+    if (index >= 0 && index < num)
+    {
+        --num;
+        Node *prev = new Node;
+        Node *delNode = new Node;
+        delNode = _head;
+        for (int i = 0; i < index; i++)
         {
-            --num;
-            Node *prev = new Node;
-            Node *delNode = new Node;
-            delNode = _head;
-            for (int i = 0; i < index; i++)
-            {
-                prev = delNode;
-                delNode = delNode->_next;
-            }
-            if (index == 0)
-            {
-                RemoveFront();
-            }
-            else
-            {
-                prev->_next = delNode->_next;
-                delete delNode;
-            }
+            prev = delNode;
+            delNode = delNode->_next;
+        }
+        if (index == 0)
+        {
+            _head = _head->_next;
+            delete delNode; 
         }
         else
         {
-            throw 1;
+            prev->_next = delNode->_next;
+            delete delNode;
         }
     }
-    catch(int err)
+    else
     {
-        cout << "Your index for function \"RemoveNode\" does not match the number of nodes in our list \n";
-
+        throw exception();
     }
+}
+
+void LinkedList::RemoveFront()
+{
+   RemoveNode (0);
+}
+void LinkedList::RemoveBack()
+{
+   RemoveNode (num - 1);
 }
 
 void LinkedList::Print()
@@ -203,26 +150,21 @@ int LinkedList::Count()
 
 int LinkedList::GetElement (int index)
 {
-    /*try
+    if (index >= 0 && index < num)
     {
-        if (index >= 0 && index < num)
-        {*/
-            Node *tmp = new Node;
-            tmp = _head;
-            tmp->_next = _head->_next;
-            for (int i = 0; i < index; ++i)
-            {
-                tmp = tmp->_next;
-            }
-            return tmp->_data;
-        /*}
-        throw 1;
+        Node *tmp = new Node;
+        tmp = _head;
+        tmp->_next = _head->_next;
+        for (int i = 0; i < index; ++i)
+        {
+            tmp = tmp->_next;
+        }
+        return tmp->_data;
     }
-    catch(int err)
+    else
     {
-        cout << "Your index for function \"GetElement\" does not match the number of nodes in our list \n";
-    }
-    return ?????;*/
+        throw exception();
+    }  
 }
 
 LinkedList::~LinkedList()
