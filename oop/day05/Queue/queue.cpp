@@ -19,7 +19,7 @@ bool Queue::IsEmpty()
 
 int Queue::Front()
 {
-    return _list.GetElement(_list.Count() - 1);
+    return _list.GetElement(0);
 }
 
 int Queue::Back()
