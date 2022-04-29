@@ -4,17 +4,16 @@
 
 using namespace std;
 
-const int size = 10000;
-
-int *BubbleSorting(int arr[size]);
-int *InSearchSort(int arr[size]);
+int *BubbleSorting(int arr[], int size);
+int *InSearchSort(int arr[], int size);
 int *Merge(int*, int*, int, int);
 int *MergeSort(int arr[], int size);
 int *QuickSort(int arr[], int size);
-void Print(int array[size]);
+void Print(int array[], int size);
 
 int main()
-{
+{ 
+  const int size = 10000;
   int source[size];
   for (int i = 0; i < size; i++)
   {
@@ -22,11 +21,11 @@ int main()
   }
   clock_t start, finish;
   start = clock();
-  BubbleSorting(source);
+  BubbleSorting(source ,size);
   finish = clock();
   cout << (1000.0 * (finish - start)) / CLOCKS_PER_SEC << endl;
   start = clock();
-  InSearchSort(source);
+  InSearchSort(source, size);
   finish = clock();
   cout << (1000.0 * (finish - start)) / CLOCKS_PER_SEC << endl;
   start = clock();
@@ -52,7 +51,7 @@ int main()
   return 0;
 }
 
-int *BubbleSorting(int arr[size])
+int *BubbleSorting(int arr[], int size)
 {
   int temp;
   bool swap;
@@ -76,7 +75,7 @@ int *BubbleSorting(int arr[size])
   return arr;
 }
 
-int *InSearchSort(int *arr)
+int *InSearchSort(int arr[] ,int size)
 {
   int temp;
   for (int i = 0; i < size; i++)
@@ -94,7 +93,7 @@ int *InSearchSort(int *arr)
   return arr;
 }
 
-void Print(int *array)
+void Print(int array[], int size)
 {
   for (int i = 0; i < size; i++)
   {
