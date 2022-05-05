@@ -9,32 +9,33 @@ using namespace std;
 
 class Tree
 {
-    private:
-        Node* _root;
+    private: 
+        void insert(Node* tmp, int data);
         int Min(Node* tmp);
         int Max(Node* tmp);
+        Node* search(Node* tmp, int data);
     public:
-        Tree()
-        {
-            _root->_left= NULL;
-            _root->_right = NULL;
-        }
-
-        Tree(int data)
-        {
-            _root->_data = data;
-        }
-        void insert(Node* tmp, int data);
+        Node* _root;
+        void insert(int data);
         void DFS (Node* tmp);
-        void BFS (Node* tmp);
+        void BFS ();
         int Min();
         int Max();
-        void BortByAscendingOrder(Node* tmp);
+        void ByAscendingOrder(Node* tmp);
+        Tree(int data);
+        Node* search(int data);
+        void remove(int data);
 };
+
+Tree::Tree(int data)
+{
+    _root = new Node(data);
+}
+
 
 void Tree::insert(Node* tmp, int data)
 {
-
+    Node* newNode = new Node(data);
     if (tmp == NULL)
     {
        tmp->_data = data;
@@ -45,7 +46,7 @@ void Tree::insert(Node* tmp, int data)
         {
             if (tmp->_left == NULL)
             {
-                tmp->_left = tmp;
+                tmp->_left = newNode;
             }
             else
             {
@@ -56,7 +57,7 @@ void Tree::insert(Node* tmp, int data)
         {
             if (tmp->_right == NULL)
             {
-                tmp->_right = tmp;
+                tmp->_right = newNode;
             }
             else
             {
@@ -66,6 +67,10 @@ void Tree::insert(Node* tmp, int data)
     }
 }
 
+void Tree::insert(int data)
+{
+    insert(_root, data);
+}
 
 void Tree::DFS (Node* tmp)
 {
@@ -86,11 +91,11 @@ void Tree::DFS (Node* tmp)
     }
 }
 
-void Tree::BFS (Node* tmp)
+void Tree::BFS ()
 {
     queue<Node*> queue;
-    queue.push(tmp);
-    while (queue.empty() == false)
+    queue.push(_root);
+    while (!queue.empty())
     {
       Node *tmp = queue.front();
       cout << tmp->_data << " ";
@@ -109,21 +114,6 @@ int Tree::Min(Node* tmp)
     {
         min = tmp->_left->_data;
     }
-    /*queue<Node*> queue;
-    queue.push(tmp);
-    while (queue.empty() == false)
-    {
-      Node* tmp = queue.front();
-      if (min > tmp->_data)
-      {
-          min = tmp->_data;
-      }
-      queue.pop();
-      if (tmp->_left != NULL)
-          queue.push(tmp->_left);
-      if (tmp->_right != NULL)
-          queue.push(tmp->_right);
-    }*/
     return min;
 }
 
@@ -146,9 +136,94 @@ int Tree::Max()
     return Max(_root);
 }
 
-void BortByAscendingOrder(Node* tmp)
+void ByAscendingOrder(Node* tmp)
 {
-    _root->BFS(tmp);
+    stack<Node*> stack;
+    stack.push(tmp);
+    if (tmp->_left != NULL)
+    {
+        ByAscendingOrder(tmp->_left);
+    }
+    if (!stack.empty())
+    {
+        cout << stack.top()->_data << " ";
+        stack.pop();
+    }
+    if (tmp->_right != NULL)
+    {
+        ByAscendingOrder(tmp->_right);
+    }
+}
+Node* Tree::search(int data)
+{
+    return search(_root, data);
+}
+
+Node* Tree::search(Node* tmp, int data)
+{
+    if(tmp)
+    {
+        if (data < tmp->_data)
+        {
+            tmp = tmp->_left;
+            search(tmp, data);
+        }
+        else if (data > tmp->_data)
+        {
+            tmp = tmp->_right;
+            search(tmp, data);
+        }
+        return tmp;
+    }
+    return nullptr;
+}
+void Tree::remove(int data) 
+{
+    Node* tmp;
+    Node* searchNode = search(data);
+    if (data == searchNode->_data)
+    {
+        if (searchNode->_right != NULL)
+        {
+            tmp = searchNode->_right;
+            if (tmp->_left == NULL)
+            {
+                searchNode->_data = tmp->_data;
+                searchNode->_right = tmp->_right;
+            }
+            else
+            {
+                while (tmp->_left->_left != NULL)
+                {
+                    tmp = tmp->_left;
+                }
+                searchNode->_data = tmp->_left->_data;
+                tmp->_left = NULL;
+            }
+        } 
+        else if(searchNode->_left != NULL)
+        {
+            tmp = searchNode->_left;
+            if (tmp->_right == NULL)
+            {
+                searchNode->_data = tmp->_data;
+                searchNode->_left = tmp->_left;
+            } 
+            else
+            {
+                while (tmp->_right->_right != NULL)
+                {
+                    tmp = tmp->_right;
+                }
+                searchNode->_data = tmp->_right->_data;
+                tmp->_right = NULL;
+            }
+        }
+        else
+        {
+            searchNode = NULL;
+        }
+    }
 }
 
 #endif

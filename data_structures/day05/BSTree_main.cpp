@@ -4,17 +4,21 @@ using namespace std;
 
 int main()
 {
-    Tree tree;
-    Node* tmp;
-    tree.insert(tmp, 15);
-    tree.insert(tmp, 10);
-    tree.insert(tmp, 20);
-    tree.insert(tmp, 11);
-    tree.insert(tmp, 16);
-    tree.DFS(tmp);
+    Tree* tree = new Tree(15);
+    tree->insert(10);
+    tree->insert(20);
+    tree->insert(11);
+    tree->insert(16);
+    tree->insert(14);
+    tree->insert(9);
+    tree->insert(22);
+    tree->DFS(tree->_root);
     cout << "\n----------\n";
-    tree.BFS(tmp);
+    tree->BFS();
     cout << endl;
-    cout << tree.Min()<< endl;
+    tree->remove(10);
+    tree->BFS();
+    cout << endl;
+    //cout << tree->Min()<< endl;
     return 0;
 }
