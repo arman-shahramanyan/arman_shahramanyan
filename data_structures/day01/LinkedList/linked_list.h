@@ -4,9 +4,8 @@
 
 class LinkedList
 {
-	private:
-		Node *_head, *_tail;
 	public:
+		Node *_head, *_tail;
 		LinkedList();
 		void AddFront(int data);
 		void AddBack(int data);
