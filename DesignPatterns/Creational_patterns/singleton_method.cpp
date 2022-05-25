@@ -27,6 +27,8 @@ void Database::getConnetion()
     (obj == nullptr) ? cout << "Not Connection \n":cout << "Connection Established \n";
 }
 
+Database* Database::obj = nullptr;
+
 int main ()
 {
     
