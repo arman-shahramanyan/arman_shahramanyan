@@ -26,6 +26,12 @@ class RoundHole
             result = (this->getRadius() >= peg.getRadius());
             return result;
         }
+        bool check (SquarePegAdapter* peg)
+        {
+            bool result;
+            result = (this->getRadius() >= peg->getRadius());
+            return result;
+        }
 };
 
 class RoundPeg {
@@ -67,19 +73,19 @@ class SquarePeg {
         }
 };
 
-class SquarePegAdapter:RoundPeg {
+class SquarePegAdapter {
     private:
-        SquarePeg peg;
+        SquarePeg* peg;
 
     public:
-        SquarePegAdapter(SquarePeg peg)
+        SquarePegAdapter(SquarePeg* peg)
         {
             this->peg = peg;
         }
         double getRadius()
         {
             double result;
-            result = (peg.getWidth() * sqrt(2)) / 2;
+            result = (peg->getWidth() * sqrt(2)) / 2;
             return result;
         }
 };
@@ -93,8 +99,8 @@ int main()
     SquarePeg* small_sqpeg = new SquarePeg(5);
     SquarePeg* large_sqpeg = new SquarePeg(10);
 
-    SquarePegAdapter* small_sqpeg_adapter = new SquarePegAdapter(*small_sqpeg);
-    SquarePegAdapter* large_sqpeg_adapter = new SquarePegAdapter(*large_sqpeg);
+    SquarePegAdapter* small_sqpeg_adapter = new SquarePegAdapter(small_sqpeg);
+    SquarePegAdapter* large_sqpeg_adapter = new SquarePegAdapter(large_sqpeg);
     hole->check(small_sqpeg_adapter);
     hole->check(large_sqpeg_adapter);
 
