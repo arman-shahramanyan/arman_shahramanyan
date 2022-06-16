@@ -6,10 +6,10 @@ console.log(str);
 
 function firstWordUppercase(str) {
     const tmp = str.slice(0, str.indexOf(' '));
-    str = str.replace(tmp, tmp.toUpperCase());
-    console.log(str);
+    return str.replace(tmp, tmp.toUpperCase());
 }
-firstWordUppercase(str);
+console.log(firstWordUppercase(str), '====variable to function');
+console.log(firstWordUppercase("javascript is a programming language"), '====string to function');
 
 console.log("==================================================");
 
@@ -18,13 +18,16 @@ console.log("==================================================");
 function cutArray(array, cutSize) {
     const tmp = [];
 
-    for (let i = 0; i < array.length; i += cutSize) {
-        tmp.push(array.slice(i, i + cutSize));
+    if (cutSize > 0) {
+        for (let i = 0; i < array.length; i += cutSize) {
+            tmp.push(array.slice(i, i + cutSize));
+        }   
+        return  tmp;
     }
-    return  tmp;
+    return array;
 }
 
-console.log(cutArray([1, 2, 3, 4], 2));
+console.log(cutArray([1, 2, 3, 4], 0));
 console.log(cutArray([1, 2, 3, 4, 5], 4));
 console.log(cutArray([1, 2, 3, 4, 5, 6, 7, 8], 3));
 
@@ -32,37 +35,31 @@ console.log("==================================================")
 
 // task 3
 
-function sumOfObjectValues(object) {
+function sumOfObjectValues(obj) {
     let sum = 0;
-
-    for (const key in object) {
-        if (!isNaN(object[key])) {
-            sum += object[key];
-        }
+    let arr = Object.values(obj);
+    for (let i = 0; i < arr.length; i++) {
+        if (typeof arr[i] == "number") sum += arr[i];
     }
     return sum;
 }
 
-console.log(sumOfObjectValues({ a: 10, b: 20, c: 'string', d: 12 }));
+console.log(sumOfObjectValues({ a: 10, b: 20, c: '17', d: 12 }));
 
 console.log("==================================================")
 
 // task 4
 
 function numberOfVowel(string) {
-    arr = ['a', 'e', 'u', 'i', 'o'];
-    let count = 0;
-    for (let i = 0; i < arr.length; i++) {
-        for (let j = 0; j < string.length; j++) {
-            if (string[j] == arr[i]) {
-                count++;
-            }
-        }
-    }
-    return count;
+
+    let text = string.toLowerCase();
+
+    let consonants =  text.replace(/[aeuio]/gi, '');
+
+    return text.length - consonants.length;
 }
 
-console.log(numberOfVowel('Today is the best day of my life'));
+console.log(numberOfVowel('Today IS the best day Of my lifE'));
 
 console.log("=================================================")
 
@@ -75,13 +72,10 @@ function sum(arr) {
     for (let i = 0; i < arr.length; i++) {
         (arr[i] >= 0) ? positive += arr[i] : negative += arr[i];
     }
-
-    const obj = {
-        'Positive': positive,
-        'Negative': negative
-    }
-
-    return obj;
+    return {
+        positive,
+        negative
+    };
 }
 
 console.log(sum([10, -12, 30, -1, -8, 0, 14, -33, 20]));
